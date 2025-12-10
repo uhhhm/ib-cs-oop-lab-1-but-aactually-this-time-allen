@@ -18,7 +18,6 @@ public class Store {
         cisItems.add(phone);
     }
 
-    // Extra methods implied by UML but not explicitly TODOs, needed for completeness
     public void addMagazine(Magazine magazine) {
         cisItems.add(magazine);
     }
@@ -51,7 +50,6 @@ public class Store {
     public ArrayList<CISItem> getItems(String itemType) {
         ArrayList<CISItem> result = new ArrayList<>();
         for (CISItem item : cisItems) {
-            // Check if the class name matches the requested type (case insensitive)
             if (item.getClass().getSimpleName().equalsIgnoreCase(itemType)) {
                 result.add(item);
             }
@@ -64,7 +62,6 @@ public class Store {
         for (CISItem item : cisItems) {
             if (item.getClass().getSimpleName().equalsIgnoreCase(itemType)) {
 
-                // We use a switch or if/else to update the specific property
                 if (property.equalsIgnoreCase("location")) {
                     item.setLocation(value);
                 } else if (property.equalsIgnoreCase("name")) {
@@ -72,8 +69,6 @@ public class Store {
                 } else if (property.equalsIgnoreCase("description")) {
                     item.setDescription(value);
                 }
-                // Note: Updating int fields (like price) requires parsing, 
-                // which wasn't requested in the simple example, so we skip it for safety.
             }
         }
     }

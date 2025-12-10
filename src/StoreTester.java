@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class StoreTester {
 
-    // Helper method to mimic JUnit assertions
+    // couldnt figure out how to import the testing junit thing so just used helper methods instead
     public static void assertTrue(boolean condition, String testName) {
         if (condition) {
             System.out.println("PASS: " + testName);
@@ -10,7 +10,6 @@ public class StoreTester {
         }
     }
 
-    // Helper method to mimic JUnit assertEquals
     public static void assertEquals(String actual, String expected, String testName) {
         if (actual.equals(expected)) {
             System.out.println("PASS: " + testName);
@@ -21,18 +20,14 @@ public class StoreTester {
 
     public static void main(String[] args) {
 
-        // ==========================================
         // TODO 6: Test for addBook
-        // ==========================================
         System.out.println("\n--- TODO 6: addBook Test ---");
         Store store1 = new Store(); // 0. Create instance
         Book b1 = new Book("Harry Potter", "Shelf A", 20, "Wizard book", 50000, "1997", "JK Rowling", "12345", "1st", "Harry Potter 1"); // 1. Create Book
         store1.addBook(b1); // 2. Add book
         assertTrue(true, "Program did not crash adding a book"); // 3. Assert
 
-        // ==========================================
         // TODO 8: Test for addBook AND addPhone
-        // ==========================================
         System.out.println("\n--- TODO 8: addPhone Test ---");
         Store store2 = new Store();
         Book b2 = new Book("The Hobbit", "Shelf B", 15, "Fantasy", 30000, "1937", "Tolkien", "67890", "2nd", "The Hobbit");
@@ -43,9 +38,7 @@ public class StoreTester {
 
         assertTrue(true, "Program did not crash adding book and phone");
 
-        // ==========================================
         // TODO 11: Test for updatePhonesLocation and getAllPhones
-        // ==========================================
         System.out.println("\n--- TODO 11: Location Update Test ---");
         Store store3 = new Store();
         store3.addPhone(new Phone("Pixel 5", "Warehouse", 600, "Google Phone", 128, "5", "Google", "Android", "5G", 6));
@@ -53,10 +46,9 @@ public class StoreTester {
         // Add a book to make sure it DOESN'T get moved
         store3.addBook(new Book("Java 101", "Warehouse", 50, "Textbook", 500, "2023", "Teacher", "111", "1st", "Java Basics"));
 
-        store3.updatePhonesLocation("Room 512"); // 2. Update all phones
-        ArrayList<Phone> allPhones = store3.getAllPhones(); // 3. Get all phones
+        store3.updatePhonesLocation("Room 512");
+        ArrayList<Phone> allPhones = store3.getAllPhones();
 
-        // 4 & 5 Check assertions
         boolean allMoved = true;
         for (Phone p : allPhones) {
             if (!p.getLocation().equals("Room 512")) {
@@ -65,7 +57,6 @@ public class StoreTester {
         }
         assertTrue(allMoved, "All phones moved to Room 512");
 
-        // Verify the book didn't move (Manual check logic)
         ArrayList<CISItem> books = store3.getItems("Book");
         if(books.get(0).getLocation().equals("Warehouse")) {
             System.out.println("PASS: Non-phones remained in original location.");
@@ -73,9 +64,7 @@ public class StoreTester {
             System.out.println("FAIL: Non-phones were moved incorrectly.");
         }
 
-        // ==========================================
         // TODO 13: Test for getItems()
-        // ==========================================
         System.out.println("\n--- TODO 13: getItems Test ---");
         Store store4 = new Store();
         store4.addBook(b1);
@@ -88,9 +77,7 @@ public class StoreTester {
         assertTrue(onlyBooks.size() == 2, "Found 2 Books");
         assertTrue(onlyPhones.size() == 1, "Found 1 Phone");
 
-        // ==========================================
         // TODO 15: Test for updateItems()
-        // ==========================================
         System.out.println("\n--- TODO 15: updateItems Test ---");
         Store store5 = new Store();
         store5.addPhone(new Phone("iPhone 13", "Room 1", 1000, "New", 128, "13", "Apple", "iOS", "5G", 6));
@@ -106,9 +93,7 @@ public class StoreTester {
         }
         assertTrue(updateSuccess, "Generic updateItems moved phones to Room 511");
 
-        // ==========================================
         // TODO 16: showAllInfo verification
-        // ==========================================
         System.out.println("\n--- TODO 16: Visual Verification ---");
         store5.showAllInfo();
     }
